@@ -1,0 +1,42 @@
+.HomePage {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+
+    &__hero {
+        background-color: rgba(255, 0, 0, 0.11);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &_tag {
+            position: relative;
+            align-self: flex-start;
+            top: 10em;
+            font-size: 1.75rem;
+            background-color: rgb(0, 50, 0, .1);
+        }
+
+        button {
+            cursor: pointer;
+            position: absolute;
+            bottom: 2.5em;
+            font-size: 1.5em;
+            padding: .5em;
+            border: none;
+            box-shadow: 0px 0px 16px rgb(0, 0, 0, .05);
+            background-color: white;
+        }
+
+        button:focus {
+            outline: none;
+        }
+    }
+
+    &__featured {
+        display: flex;
+        column-gap: 1em;
+        background-color: rgba(0, 255, 170, 0.041);
+    }
+}

@@ -1,0 +1,23 @@
+.Featured {
+    height: 60vh;
+    flex: 1;
+    background-color: rgb(100, 0, 0, .1);
+    position: relative;
+
+    a {
+        position: absolute;
+        background-color: rgb(184, 148, 148);
+        padding: .5em;
+        bottom: 2em;
+        width: fit-content;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        transition: all .15s;
+    }
+
+    a:hover {
+        // Change animation
+        background-color: yellow;
+    }
+}
