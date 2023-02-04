@@ -1,0 +1,7 @@
+.ProductDisplay {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5em;
+    padding: 2.5em 10em;
+    background-color: rgba(0, 128, 0, 0.212);
+}

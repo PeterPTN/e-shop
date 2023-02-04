@@ -1,8 +1,5 @@
 import { useState, createContext } from 'react';
-
-interface ComponentProps {
-    children: React.ReactNode,
-}
+import type { Children } from '../lib/types';
 
 interface ContextType {
     productType: string,
@@ -10,14 +7,14 @@ interface ContextType {
 }
 
 const initialContext = {
-    productType: "",
+    productType: "all",
     setProductType: () => { }
 }
 
 export const ProductTypeContext = createContext<ContextType>(initialContext);
 
-const ProductTypeProvider = ({ children }: ComponentProps) => {
-    const [productType, setProductType] = useState("");
+const ProductTypeProvider = ({ children }: Children) => {
+    const [productType, setProductType] = useState("all");
     
     const data = { productType, setProductType };
 

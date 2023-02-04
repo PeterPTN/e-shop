@@ -1,0 +1,32 @@
+.ProductCard {
+    height: 55vh;
+    flex: 1;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    img {
+        position: absolute;
+        object-fit: cover;
+    }
+
+    div {
+        margin-top: auto;
+    }
+
+    p {
+        color: rgb(0, 0, 0, .85);
+    }
+
+    p:first-child {
+        line-height: 3;
+        padding: 0 .5em;
+        text-align: left;
+    }
+
+    p {
+        line-height: 1.5;
+        text-align: center;
+    }
+}

@@ -1,8 +1,5 @@
 import { useState, createContext } from 'react';
-
-interface ComponentProps {
-    children: React.ReactNode,
-}
+import type { Children } from '../lib/types';
 
 interface ContextType {
     smallHeader: boolean,
@@ -16,7 +13,7 @@ const initialContext = {
 
 export const HeaderToggleContext = createContext<ContextType>(initialContext);
 
-const HeaderToggleProvider = ({ children }: ComponentProps) => {
+const HeaderToggleProvider = ({ children }: Children) => {
     const [smallHeader, setSmallHeader] = useState(false);
     
     const data = { smallHeader, setSmallHeader };

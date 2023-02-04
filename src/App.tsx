@@ -1,19 +1,21 @@
-import { useState } from 'react';
+import { BuildProviderTree } from './services/data-utils';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import HeaderToggleProvider from './context/HeaderToggleProvider';
 import Root from './pages/root/Root';
 import ErrorPage from './error/errorpage/ErrorPage';
 import CartPage from './pages/cartpage/CartPage';
 import HomePage from './pages/homepage/HomePage';
 import ProductsPage from './pages/productspage/ProductsPage';
 import ProductViewPage from './pages/productviewpage/ProductViewPage';
+import HeaderToggleProvider from './context/HeaderToggleProvider';
+import ProductTypeProvider from './context/ProductTypeProvider';
+import PriceFilterProvider from './context/PriceFilterProvider';
+import ColorFilterProvider from './context/ColorFilterProvider';
+import SizeFilterProvider from './context/SizeFilterProvider';
 
 // Cart page can READ, UPDATE, DELETE
 // Product page READS
 
 // Bonus-bonus: Make an admin page to CREATE new products
-
-
 
 function App() {
   const router = createBrowserRouter([
@@ -39,14 +41,23 @@ function App() {
     },
   ]);
 
+  const Providers = BuildProviderTree([
+    HeaderToggleProvider,
+    ProductTypeProvider,
+    PriceFilterProvider,
+    ColorFilterProvider,
+    SizeFilterProvider
+  ]);
+
   return (
     <>
-      <HeaderToggleProvider>
+      <Providers>
         <RouterProvider router={router} />
-      </HeaderToggleProvider>
+      </Providers>
     </>
   )
 }
+
 
 export default App
 
