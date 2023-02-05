@@ -1,13 +1,13 @@
 .FilterType {
-    background-color: green;
     position: relative;
+    animation: load .5s forwards;
 
     ul {
         width: fit-content;
         background-color: yellow;
         position: absolute;
         overflow: hidden;
-        opacity: 0;
+        z-index: 100;
 
         li {
             border-bottom: 1px solid transparent;
@@ -17,6 +17,16 @@
         li:hover {
             border-color: blue;
         }
+    }
+}
+
+@keyframes load {
+    0% {
+        overflow: hidden;
+    }
+
+    100% {
+        overflow: none;
     }
 }
 
@@ -48,6 +58,7 @@
 .FilterListHide {
     animation: hide .1s linear forwards;
     white-space: nowrap;
+    visibility: hidden;
 
     @keyframes hide {
         0% {

@@ -1,10 +1,10 @@
 import { checkProductType, checkPriceType, checkColorType, checkSizeType } from '../../services/dom-utils';
 import { ProductTypeContext } from '../../context/ProductTypeProvider';
 import { PriceFilterContext } from '../../context/PriceFilterProvider';
+import { SizeFilterContext } from '../../context/SizeFilterProvider';
+import { ColorFilterContext } from '../../context/ColorFilterProvider';
 import { useContext } from 'react'
 import styles from './FilterHeading.module.scss';
-import { ColorFilterContext } from '../../context/ColorFilterProvider';
-import { SizeFilterContext } from '../../context/SizeFilterProvider';
 
 interface ListObject {
     id: number,

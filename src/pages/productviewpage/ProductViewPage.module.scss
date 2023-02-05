@@ -1,0 +1,86 @@
+.ProductView {
+    background-color: rgba(0, 0, 255, 0.075);
+    min-height: 100vh;
+
+    p:first-letter {
+        text-transform: capitalize;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10em;
+        padding: 0 10em;
+        background-color: green;
+
+        h2 {
+            text-transform: capitalize;
+            font-style: italic;
+        }
+
+        button {
+            align-self: flex-start;
+        }
+    }
+
+    main {
+        display: flex;
+        padding: 0 10em;
+
+        img {
+            width: 20px;
+            cursor: pointer;
+            box-sizing: content-box;
+            padding: .15em;
+        }
+    }
+}
+
+.Images {
+    flex: 1;
+    background-color: rgba(255, 0, 0, 0.089);
+    min-height: 70vh;
+}
+
+.Info {
+    flex: 1;
+    background-color: rgba(255, 255, 0, 0.39);
+}
+
+.OutOfStock {
+    user-select: none;
+    color: rgb(0, 0, 0, .15);
+}
+
+.StarTrue {
+    animation: loadIn .075s forwards;
+}
+
+.StarFalse {
+    animation: loadOut .075s forwards;
+}
+
+@keyframes loadIn {
+    0% {
+        opacity: .2;
+        filter: contrast(.5);
+    }
+
+    100% {
+        opacity: 1;
+        filter: contrast(1);
+    }
+}
+
+@keyframes loadOut {
+    0% {
+        opacity: 1;
+        filter: contrast(1);
+    }
+
+    100% {
+        opacity: .2;
+        filter: contrast(.5);
+    }
+}

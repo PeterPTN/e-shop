@@ -1,6 +1,6 @@
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc, getDocs, getDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from '../../config/firebase-config.js';
-import type { ProductsArray } from "../lib/types.js";
+import type { ProductItems, ProductsArray } from "../lib/types.js";
 
 // CRUD
 
@@ -58,6 +58,27 @@ export const getAllProducts = async () => {
     }
 }
 
+export const getProduct = async (id: string, colType: string) => {
+    try {
+        const productRef = doc(db, colType, id)
+        const productSnapshot = await getDoc(productRef);
+        const cleanProduct = productSnapshot.data();
+        return cleanProduct as ProductItems;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
+export const setFavouriteProduct = async (id: string, colType: string, favValue: boolean) => {
+    try {
+        const productRef = doc(db, colType, id)
+        const data = { favourite: !favValue };
+        updateDoc(productRef, data);
+    } catch (error){
+        console.log(error);
+    }
+}
 
 // UPDATE (PUT, PATCH)
 

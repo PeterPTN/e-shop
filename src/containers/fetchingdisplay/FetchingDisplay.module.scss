@@ -1,0 +1,48 @@
+.DisplayLoader {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: loadIn .2s forwards linear;
+}
+
+.Spinner {
+    text-align: center;
+    aspect-ratio: 1/1;
+    margin-bottom: 30em;
+    border-radius: 50%;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, rgba(255, 0, 0, 0.26), rgba(0, 128, 0, 0.253), rgba(0, 0, 255, 0.144), rgba(255, 255, 0, 0.212));
+    background-size: 400%;
+    background-position: 50px;
+    animation: wololo 1s ease-in-out infinite alternate;
+
+    p {
+        font-size: 2em;
+        margin-bottom: .1em;
+        margin-left: .5em;
+    }
+}
+
+@keyframes loadIn {
+    0% {
+        opacity: .1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes wololo {
+    0% {
+        background-position: right;
+    }
+
+    100% {
+        background-position: left;
+    }
+}

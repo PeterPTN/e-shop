@@ -1,13 +1,25 @@
-import React from 'react';
 import styles from './Featured.module.scss';
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { ProductItems } from '../../lib/types';
+import { useContext } from 'react';
+import { HeaderToggleContext } from '../../context/HeaderToggleProvider';
 
-const Featured = () => {
-    // pass in ID for item
+interface Prop {
+    product: ProductItems
+}
+
+const Featured = ({ product }: Prop) => {
+    const navigate = useNavigate();
+    const { setSmallHeader } = useContext(HeaderToggleContext);
+
+    const handleClick = () => {
+        setSmallHeader(true);
+        navigate(`/products/${product.type}_${product.id}`)
+    }
 
     return (
-        <div className={styles.Featured}>
-            <Link to='products/'>Classic Tee</Link>
+        <div className={styles.FeaturedCard}>
+            <button onClick={handleClick} >{product.item}</button>
         </div>
     )
 }

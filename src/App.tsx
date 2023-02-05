@@ -11,11 +11,9 @@ import ProductTypeProvider from './context/ProductTypeProvider';
 import PriceFilterProvider from './context/PriceFilterProvider';
 import ColorFilterProvider from './context/ColorFilterProvider';
 import SizeFilterProvider from './context/SizeFilterProvider';
-
-// Cart page can READ, UPDATE, DELETE
-// Product page READS
-
-// Bonus-bonus: Make an admin page to CREATE new products
+import CartItemsProvider from './context/CartItemsProvider';
+import FavouritesPage from './pages/favouritespage/FavouritesPage';
+import LoaderProvider from './context/LoaderProvider';
 
 function App() {
   const router = createBrowserRouter([
@@ -34,8 +32,12 @@ function App() {
           element: <ProductsPage />,
         },
         {
-          path: "/products/:id",
-          element: <ProductViewPage />
+          path: "/products/:param",
+          element: <ProductViewPage />,
+        },
+        {
+          path: "/favourites",
+          element: <FavouritesPage />
         }
       ]
     },
@@ -46,7 +48,9 @@ function App() {
     ProductTypeProvider,
     PriceFilterProvider,
     ColorFilterProvider,
-    SizeFilterProvider
+    SizeFilterProvider,
+    CartItemsProvider,
+    LoaderProvider
   ]);
 
   return (

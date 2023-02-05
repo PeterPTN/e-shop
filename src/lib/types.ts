@@ -11,6 +11,8 @@ interface ProductItems {
         l: number
         xl: number
     }
+    type: string;
+    favourite: boolean;
 }
 
 type ProductsArray = ProductItems[];

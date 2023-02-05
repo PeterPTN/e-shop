@@ -1,10 +1,10 @@
-.Featured {
-    height: 60vh;
+.FeaturedCard {
     flex: 1;
     background-color: rgb(100, 0, 0, .1);
     position: relative;
 
-    a {
+    button {
+        font-size: 1em;
         position: absolute;
         background-color: rgb(184, 148, 148);
         padding: .5em;
@@ -14,9 +14,11 @@
         left: 0;
         right: 0;
         transition: all .15s;
+        border: none;
+        cursor: pointer;
     }
 
-    a:hover {
+    button:hover {
         // Change animation
         background-color: yellow;
     }

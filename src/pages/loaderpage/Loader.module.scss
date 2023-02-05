@@ -3,13 +3,13 @@
     width: 100%;
     background-color: rgb(255, 255, 255);
     // Make timeout after animation duration
-    animation: loader .4s linear forwards;
+    animation: loader .75s linear forwards;
     position: absolute;
 }
 
 @keyframes loader {
     0% {
-        opacity: 1;
+        opacity: .7;
         z-index: 110;
     }
 
