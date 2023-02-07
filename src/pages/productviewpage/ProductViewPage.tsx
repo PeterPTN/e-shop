@@ -34,6 +34,7 @@ const ProductViewPage = () => {
   const [productAmount, setProductAmount] = useState<sizeObj>(initialSizes);
   const [relatedProducts, setRelatedProducts] = useState<ProductItems[]>();
   const [showWarning, setShowWarning] = useState(false);
+  const [forceRender, setForceRender] = useState(false);
   const { setProductType } = useContext(ProductTypeContext);
   const { loader, setLoader } = useContext(LoaderContext);
   const { smallHeader, setSmallHeader } = useContext(HeaderToggleContext);
@@ -49,9 +50,12 @@ const ProductViewPage = () => {
   }
 
   const handleRelatedProductClick = (id: string) => {
-    navigate(`/products:${id}`);
+    if (product) {
+      navigate(`/products/${product.type}_${id}`);
+      setForceRender(!forceRender);
+    }
   }
- 
+
   const handleImageClick = (index: number) => {
     // Change fat image based on useState array index
   }
@@ -120,9 +124,6 @@ const ProductViewPage = () => {
 
         setRelatedProducts(relatedProducts);
       }
-      //const pageProduct = product?.item;
-      //const relatedProducts = allProducts.filter(product =>)
-      //console.log(allProducts);
     }
 
     const startUp = async () => {
@@ -131,7 +132,7 @@ const ProductViewPage = () => {
     }
 
     startUp();
-  }, [])
+  }, [forceRender])
 
   // Favourite
   useEffect(() => {
@@ -168,11 +169,10 @@ const ProductViewPage = () => {
                   {/* Maybe render from an array pass in index as arg */}
                   <img onClick={() => handleImageClick(1)} src="" alt="" />
                   <img onClick={() => handleImageClick(2)} src="" alt="" />
-                  <img onClick={() => handleImageClick(3)} src="" alt="" />
                 </div>
 
                 {/* Fat image */}
-                <img src="" />
+                <img src={product.img[0]} />
               </div>
 
               {/* Info */}

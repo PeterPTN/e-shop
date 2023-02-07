@@ -22,12 +22,12 @@ const FILTERS: FilterList = [
     {
         id: ++counter,
         listHeading: "color",
-        listItems: ["white", "black", "red", "navy", "grey"]
+        listItems: ["clear", "white", "black", "navy", "grey"]
     },
     {
         id: ++counter,
         listHeading: "size",
-        listItems: ['xs', "s", "m", "l", 'xl']
+        listItems: ['clear', 'xs', "s", "m", "l", 'xl']
     }
 ];
 

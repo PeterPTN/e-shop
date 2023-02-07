@@ -17,6 +17,15 @@
         li:hover {
             border-color: blue;
         }
+
+       
+    }
+
+    ul:last-child {
+
+        li:first-child {
+            text-transform: capitalize;
+        }
     }
 }
 
@@ -77,4 +86,12 @@
             visibility: hidden;
         }
     }
+}
+
+.ListStyles {
+    background-color: blue;
+}
+
+.ListParentStyles {
+    border-bottom: 5px solid green;
 }

@@ -2,12 +2,12 @@ import { createContext, useState } from "react";
 import type { Children } from "../lib/types";
 
 interface ContextType {
-    colorFilter: string[];
-    setColorFilter: React.Dispatch<React.SetStateAction<never[] | string[]>>
+    colorFilter: string;
+    setColorFilter: React.Dispatch<React.SetStateAction<string>>
 }
 
 const initialContext = {
-    colorFilter: [],
+    colorFilter: "",
     setColorFilter: () => { }
 }
 
@@ -15,7 +15,7 @@ export const ColorFilterContext = createContext<ContextType>(initialContext);
 
 const ColorFilterProvider = ({ children }: Children) => {
     // state either never or string array
-    const [colorFilter, setColorFilter] = useState<string[]>([]);
+    const [colorFilter, setColorFilter] = useState<string>("");
 
     const data = { colorFilter, setColorFilter };
 
