@@ -21,6 +21,10 @@
   display: none !important;
 }
 
+button {
+  cursor: pointer;
+}
+
 /* Single line truncate */
 .truncate {
   white-space: nowrap;

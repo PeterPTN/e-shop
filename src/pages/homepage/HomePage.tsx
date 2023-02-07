@@ -1,7 +1,7 @@
+import type { ProductsArray } from '../../lib/types'
 import { useState, useContext, useEffect, } from 'react';
 import { getAllProducts } from '../../services/firebase-utils';
 import { useNavigate } from 'react-router-dom'
-import type { ProductsArray } from '../../lib/types'
 import { HeaderToggleContext } from '../../context/HeaderToggleProvider';
 import { ProductTypeContext } from '../../context/ProductTypeProvider';
 import { LoaderContext } from '../../context/LoaderProvider';

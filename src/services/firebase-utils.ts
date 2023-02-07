@@ -1,25 +1,6 @@
-import { collection, addDoc, getDocs, getDoc, doc, updateDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs, getDoc, doc, updateDoc, increment } from "firebase/firestore";
 import { db } from '../../config/firebase-config.js';
 import type { ProductItems, ProductsArray } from "../lib/types.js";
-
-// CRUD
-
-// CREATE (POST)
-/*
-export const addMovie = async (movieData) => {
-    // Cleaning up the data before sending it to the DB
-    const { title, year, imgUrl } = movieData;
-
-    // We can add extra field after grabbing the movieData from the form
-
-    const newMovie = { title, releaseYear: year, imgUrl, watchCount: 0 };
-
-    // Accessing The collection Reference
-    const collectionRef = collection(db, "movies");
-    const newDoc = await addDoc(collectionRef, newMovie);
-    return newDoc;
-};
-*/
 
 // Read
 export const getTops = async () => {
@@ -62,24 +43,61 @@ export const getProduct = async (id: string, colType: string) => {
     try {
         const productRef = doc(db, colType, id)
         const productSnapshot = await getDoc(productRef);
-        const cleanProduct = productSnapshot.data();
-        return cleanProduct as ProductItems;
+        const productData = productSnapshot.data();
+        return { ...productData, id: productSnapshot.id } as ProductItems;
     } catch (error) {
         console.log(error);
         return null;
     }
 }
 
+// Update
 export const setFavouriteProduct = async (id: string, colType: string, favValue: boolean) => {
     try {
         const productRef = doc(db, colType, id)
         const data = { favourite: !favValue };
         updateDoc(productRef, data);
-    } catch (error){
+    } catch (error) {
         console.log(error);
     }
 }
 
-// UPDATE (PUT, PATCH)
+export const addOneToCart = async (id: string, colType: string, size: string) => {
+    try {
+        const productRef = doc(db, colType, id);
+        const data = {
+            [`sizes.${size}`]: increment(-1),
+            [`inCart.${size}`]: increment(1)
+        }
+        await updateDoc(productRef, data);
+    } catch (error) {
+        console.log(error);
+    }
+}
 
-// DELETE (DELETE)
+export const removeOneFromCart = async (id: string, colType: string, size: string) => {
+    try {
+        const productRef = doc(db, colType, id);
+        const data = {
+            [`sizes.${size}`]: increment(1),
+            [`inCart.${size}`]: increment(-1)
+        }
+        await updateDoc(productRef, data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// Delete all items from cart and revert to initial
+export const removeProductFromCart = async (id: string, colType: string, size: string, amount: number) => {
+    try {
+        const productRef = doc(db, colType, id);
+        const data = {
+            [`sizes.${size}`]: increment(amount),
+            [`inCart.${size}`]: increment(-amount)
+        }
+        await updateDoc(productRef, data);
+    } catch (error) {
+        console.log(error);
+    }
+}

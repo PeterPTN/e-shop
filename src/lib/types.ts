@@ -3,7 +3,7 @@ interface ProductItems {
     img: string
     item: string
     price: number
-    id: string;
+    id: string
     sizes: {
         xs: number
         s: number
@@ -11,8 +11,16 @@ interface ProductItems {
         l: number
         xl: number
     }
-    type: string;
-    favourite: boolean;
+    inCart: {
+        xs: number
+        s: number
+        m: number
+        l: number
+        xl: number
+    }
+    type: string
+    favourite: boolean
+    chosenSize: string
 }
 
 type ProductsArray = ProductItems[];

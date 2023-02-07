@@ -1,5 +1,5 @@
 .ProductCard {
-    height: 55vh;
+    min-height: 45vh;
     flex: 1;
     border: 1px solid black;
     display: flex;
@@ -8,9 +8,15 @@
     cursor: pointer;
 
     img {
-        position: absolute;
-        object-fit: cover;
+        cursor: pointer;
     }
+}
+
+.ProductImage {
+    width: 100%;
+    height: 100%;
+    top: -1.35em;
+    object-fit: contain;
 }
 
 .StarContainer {
@@ -20,10 +26,10 @@
     top: .5em;
 
     img {
+        position: absolute;
         box-sizing: content-box;
         padding: .15em;
         height: 20px;
-        cursor: pointer;
     }
 }
 
@@ -85,6 +91,10 @@
         line-height: 3;
         padding: 0 .5em;
         text-align: left;
+    }
+
+    p::first-letter {
+        text-transform: capitalize;
     }
 
     p {

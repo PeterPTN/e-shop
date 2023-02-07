@@ -40,14 +40,14 @@ const ProductCard = ({ product, isFavourited }: Props) => {
     }, [])
 
     return (
-        <div onClick={handleProductViewClick} className={productCardStyles.join(" ")}>
+        <div className={productCardStyles.join(" ")}>
             <div
                 className={styles.StarContainer}
                 onClick={handleFavouriteClick}>
                 <img className={starStyles.join(" ")} src={star} />
             </div>
 
-            <img src={product.img[0]} />
+            <img onClick={handleProductViewClick} className={styles.ProductImage} src={product.img[0]} />
 
             <div className={styles.Info}>
                 <p>{product.item}</p>

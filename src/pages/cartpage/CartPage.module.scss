@@ -1,0 +1,17 @@
+.CartPage {
+    min-height: 100vh;
+    background-color: rgba(128, 51, 0, 0.123);
+
+    header {
+        margin-top: 10em;
+        background-color: red;
+        text-align: center;
+    }
+}
+
+.ReviewCart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2em;
+}
