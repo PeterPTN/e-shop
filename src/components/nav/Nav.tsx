@@ -1,12 +1,15 @@
-import type { ProductItems } from '../../lib/types';
 import { getAllProducts } from '../../services/firebase-utils';
 import { useEffect, useState, useContext } from 'react';
 import { CartTotalContext } from '../../context/CartTotalProvider';
 import { NavLink } from 'react-router-dom';
 import styles from './Nav.module.scss';
+import { HeaderToggleContext } from '../../context/HeaderToggleProvider';
 
 const Nav = () => {
     const { cartNumber, setCartNumber } = useContext(CartTotalContext);
+    const { smallHeader } = useContext(HeaderToggleContext);
+    const NavStyles = smallHeader ? [styles.Nav, styles.SmallNav] : [styles.Nav];
+    const CartStyles = cartNumber > 0 ? [styles.CartNumber] : [];
 
     // Reload on product update
     useEffect(() => {
@@ -23,9 +26,9 @@ const Nav = () => {
 
     return (
         // Placeholders add images
-        <nav className={styles.Nav}>
-            <NavLink to="/cart">{cartNumber > 0 && cartNumber} Cart</NavLink>
-            <NavLink to="/favourites" >Favourites</NavLink>
+        <nav className={NavStyles.join(" ")}>
+            <NavLink className={CartStyles.join("")} to="/cart">{cartNumber > 0 && cartNumber} cart</NavLink>
+            <NavLink to="/favourites">favourites</NavLink>
         </nav>
     )
 }

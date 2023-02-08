@@ -1,11 +1,15 @@
 .ProductCard {
-    min-height: 45vh;
+    height: fit-content;
     flex: 1;
-    border: 1px solid black;
     display: flex;
     flex-direction: column;
     position: relative;
+    align-items: center;
+    justify-content: flex-start;
     cursor: pointer;
+    border: 1px solid rgba(231, 215, 170, 0.75);
+    padding: .5rem .5rem 1rem;
+    border-radius: 2px;
 
     img {
         cursor: pointer;
@@ -13,10 +17,33 @@
 }
 
 .ProductImage {
-    width: 100%;
-    height: 100%;
-    top: -1.35em;
+    width: 90%;
+    height: 80%;
     object-fit: contain;
+}
+
+.Info {
+    margin-top: auto;
+
+    p {
+        color: rgb(0, 0, 0, .85);
+
+    }
+
+    p:first-child {
+        color: rgb(0, 0, 0, .75);
+        font-weight: bold;
+        font-size: 1.05rem;
+    }
+
+    p::first-letter {
+        text-transform: capitalize;
+    }
+
+    p {
+        line-height: 1.5;
+        text-align: center;
+    }
 }
 
 .StarContainer {
@@ -80,25 +107,3 @@
     }
 }
 
-.Info {
-    margin-top: auto;
-
-    p {
-        color: rgb(0, 0, 0, .85);
-    }
-
-    p:first-child {
-        line-height: 3;
-        padding: 0 .5em;
-        text-align: left;
-    }
-
-    p::first-letter {
-        text-transform: capitalize;
-    }
-
-    p {
-        line-height: 1.5;
-        text-align: center;
-    }
-}

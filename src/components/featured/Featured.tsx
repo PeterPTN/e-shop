@@ -20,7 +20,7 @@ const Featured = ({ product }: Prop) => {
     return (
         <div className={styles.FeaturedCard}>
             <img src={product.img[0]}  />
-            <button onClick={handleClick} >{product.item}</button>
+            <button className={styles.featuredButton} onClick={handleClick} >{product.item}</button>
         </div>
     )
 }

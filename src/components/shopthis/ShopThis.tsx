@@ -16,8 +16,8 @@ const ShopThis = () => {
 
     return (
         <div className={styles.ShopThis}>
-            <div><button onClick={handleClick}>Shop tops</button></div>
-            <div><button onClick={handleClick}>Shop bottoms</button></div>
+            <div><button onClick={handleClick}>shop tops</button></div>
+            <div><button onClick={handleClick}>shop bottoms</button></div>
         </div>
     )
 }

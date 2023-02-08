@@ -59,9 +59,10 @@ const FilterHeading = ({ filterData, onListClick, showList }: Props) => {
         }
         else if (checkColorType(listItem)) {
             const parent = target.parentNode?.previousSibling as HTMLLIElement;
-            if (listItem === "clear") {
+            if (listItem === "reset") {
                 setColorFilter("");
                 parent.classList.remove(`${styles.ListParentStyles}`);
+                listTarget.current.color.classList.remove(`${styles.ListStyles}`);
                 return;
             }
             if (listTarget.current.color !== "" && listTarget.current.color.classList.contains(`${styles.ListStyles}`)) {
@@ -77,11 +78,15 @@ const FilterHeading = ({ filterData, onListClick, showList }: Props) => {
             if (listItem === "clear") {
                 setSizeFilter("");
                 parent.classList.remove(`${styles.ListParentStyles}`);
+                console.log(listTarget.current.size, "classList");
+                listTarget.current.size.classList.remove(`${styles.ListStyles}`);
+                console.log(listTarget.current.size);
                 return;
             }
             if (listTarget.current.size !== "" && listTarget.current.size.classList.contains(`${styles.ListStyles}`)) {
                 listTarget.current.size.classList.remove(`${styles.ListStyles}`);
             }
+            console.log(listTarget.current.size);
             listTarget.current.size = target;
             listTarget.current.size.classList.add(`${styles.ListStyles}`);
             parent.classList.add(`${styles.ListParentStyles}`);
@@ -92,7 +97,7 @@ const FilterHeading = ({ filterData, onListClick, showList }: Props) => {
     useEffect(() => {
         // Add styling to "all" productType
         document.querySelectorAll("li").forEach(e => {
-            if (e.textContent === "all") {
+            if (e.textContent === `${productType}`) {
                 listTarget.current.product = e;
                 listTarget.current.product.classList.add(`${styles.ListStyles}`);
             }

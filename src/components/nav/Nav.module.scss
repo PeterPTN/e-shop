@@ -3,4 +3,42 @@
     column-gap: 1em;
     position: relative;
     z-index: 100;
+    align-self: flex-start;
+    margin: 4rem 4rem 0 0;
+    
+    a {
+        color: rgb(155, 155, 155);
+        padding: 5px 0;
+        transition: .15s all;
+        font-size: 1.5rem;
+        border-bottom: 2px solid rgb(155, 155, 155, .65);
+        transition: all .15s;
+        opacity: .5;
+    }
+
+    a:hover {
+        color: rgb(105, 105, 105);
+        border-bottom: 2px solid rgb(105, 105, 105, .9);
+        opacity: 1;
+    }
+}
+
+.CartNumber {
+    opacity: 1 !important;
+
+    &:first-letter {
+        color: var(--primary);
+        text-shadow: none;
+    }
+
+    border-bottom: 2px solid var(--primary) !important;
+}
+
+.SmallNav {
+    margin: 1.5rem 1.5rem 0 0 !important;
+
+    a {
+        font-size: 1.2rem !important;
+    }
+
 }

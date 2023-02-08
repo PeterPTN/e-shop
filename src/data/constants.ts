@@ -22,7 +22,7 @@ const FILTERS: FilterList = [
     {
         id: ++counter,
         listHeading: "color",
-        listItems: ["clear", "white", "black", "navy", "grey"]
+        listItems: ["reset", "white", "black", "navy", "grey"]
     },
     {
         id: ++counter,

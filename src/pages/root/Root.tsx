@@ -6,14 +6,14 @@ import styles from './Root.module.scss';
 
 const Root = () => {
     const { smallHeader } = useContext(HeaderToggleContext);
-    const HeadingStyles = smallHeader ? styles.SmallHeading : styles.BigHeading;
+    const HeadingStyles = smallHeader ? [styles.Heading, styles.SmallHeading] : [styles.Heading, styles.BigHeading];
+    const YearStyles = smallHeader ? [styles.Year, styles.SmallYear] : [styles.Year]
 
     return (
         <>
             <header className={styles.Header}>
                 <div>
-                    <Link to="" className={HeadingStyles}>for the boys</Link>
-                    <h2>est.1994</h2>
+                    <Link to="/" className={HeadingStyles.join(" ")}>For The Boys</Link>
                 </div>
 
                 <Nav />

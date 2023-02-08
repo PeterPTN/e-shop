@@ -1,4 +1,6 @@
 /* Global CSS Styles + Reset */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Quicksand&family=Shadows+Into+Light&display=swap');
+
 :root {
   font-size: 1rem;
 }
@@ -11,6 +13,8 @@
   padding: 0;
   text-decoration: none;
   list-style: none;
+  font-family: 'Quicksand', sans-serif;
+  --primary: rgb(207, 175, 88);
 }
 
 .text-center {
@@ -44,4 +48,14 @@ button {
   -webkit-line-clamp: 2;
 }
 
-/* ---- Variables/Mixins/Etc ---- */
+/* 
+font-family: 'Cormorant Garamond', serif;
+font-family: 'Quicksand', sans-serif;
+font-family: 'Shadows Into Light', cursive;
+*/
+
+h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: normal;
+  letter-spacing: -2px;
+}

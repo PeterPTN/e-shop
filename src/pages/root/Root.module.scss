@@ -10,23 +10,46 @@
     padding: 0 .5em;
     position: absolute;
     top: 0;
+
+}
+
+.Heading {
+    color: var(--primary);
+    text-shadow:
+        0px 0px 16px rgba(0, 0, 0, 0.2),
+        0px 0px 2px rgb(80, 42, 6);
+    ;
+    word-spacing: -30px;
+    font-weight: bolder;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    display: inline-block;
+    transform: skewX(-12.5deg);
+    position: relative;
+    left: 1.25rem;
 }
 
 .SmallHeading {
-    font-size: 2em;
+    font-size: 2.5em;
+    word-spacing: -5px;
+    text-shadow: 0px 0px 6px rgb(0, 0, 0, 0.1);
+    top: .75rem;
+    left: 1rem;
+    text-shadow: 0px 0px .5px rgb(80, 42, 6, .75);
 }
 
 .BigHeading {
-    font-size: 10em;
+    font-size: 12.5em;
+    margin-left: 1rem;
 }
 
 .Footer {
     margin-top: 1em;
     padding: 1em;
-    background-color: rgba(145, 109, 12, 0.5);
     text-align: center;
+    border-top: 1px solid rgb(0,0,0,.05);
 
     a {
-        color: rgb(0, 0, 0, .85);
+        color: rgba(14, 14, 14, .85);
     }
 }
