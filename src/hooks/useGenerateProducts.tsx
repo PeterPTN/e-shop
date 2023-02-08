@@ -33,11 +33,11 @@ const useGenerateProducts = () => {
         else if (filter.charAt(0) === "h") setProducts(product => product.slice(0).sort((a, b) => b.price - a.price));
     }
 
-    const filterByColor = (filter: string[]) => {
+    const filterByColor = (filter: string) => {
         setProducts((current) => current.slice().filter(product => filter.includes(product.color)));
     }
 
-    const filterBysize = (filter: string[]) => {
+    const filterBysize = (filter: string) => {
         setProducts((current) => current.slice().reduce((array: ProductsArray, product) => {
             Object.entries(product.sizes).forEach(([key, value]) => {
                 if (filter.includes(key) && value > 0 && (!array.includes(product))) array.push(product);
