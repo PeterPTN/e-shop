@@ -1,17 +1,25 @@
-import { getAllProducts } from '../../services/firebase-utils';
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useContext } from 'react';
+import { HeaderToggleContext } from '../../context/HeaderToggleProvider';
 import { CartTotalContext } from '../../context/CartTotalProvider';
+import { getAllProducts } from '../../services/firebase-utils';
+import { ProductTypeContext } from '../../context/ProductTypeProvider';
+import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import styles from './Nav.module.scss';
-import { HeaderToggleContext } from '../../context/HeaderToggleProvider';
 
 const Nav = () => {
     const { cartNumber, setCartNumber } = useContext(CartTotalContext);
     const { smallHeader } = useContext(HeaderToggleContext);
+    const { setProductType } = useContext(ProductTypeContext);
     const NavStyles = smallHeader ? [styles.Nav, styles.SmallNav] : [styles.Nav];
     const CartStyles = cartNumber > 0 ? [styles.CartNumber] : [];
+    const navigate = useNavigate();
 
-    // Reload on product update
+    const handleClick = () => {
+        setProductType("all");
+        navigate("/products");
+    }
+
     useEffect(() => {
         const generateProducts = async () => {
             const allProducts = await getAllProducts();
@@ -28,6 +36,7 @@ const Nav = () => {
         // Placeholders add images
         <nav className={NavStyles.join(" ")}>
             <NavLink className={CartStyles.join("")} to="/cart">{cartNumber > 0 && cartNumber} cart</NavLink>
+            <p onClick={handleClick}>products</p>
             <NavLink to="/favourites">favourites</NavLink>
         </nav>
     )

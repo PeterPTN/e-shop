@@ -5,26 +5,27 @@
     z-index: 100;
     align-self: flex-start;
     margin: 4rem 4rem 0 0;
-    
-    a {
+
+    a,
+    p {
         color: rgb(155, 155, 155);
         padding: 5px 0;
         transition: .15s all;
         font-size: 1.5rem;
         border-bottom: 2px solid rgb(155, 155, 155, .65);
         transition: all .15s;
-        opacity: .5;
     }
 
-    a:hover {
-        color: rgb(105, 105, 105);
-        border-bottom: 2px solid rgb(105, 105, 105, .9);
-        opacity: 1;
+    p{cursor: pointer;}
+
+
+    a:hover, p:hover {
+        color: rgb(85, 85, 85);
+        border-bottom: 2px solid rgba(99, 99, 99, 0.9);
     }
 }
 
 .CartNumber {
-    opacity: 1 !important;
 
     &:first-letter {
         color: var(--primary);
@@ -37,7 +38,7 @@
 .SmallNav {
     margin: 1.5rem 1.5rem 0 0 !important;
 
-    a {
+    a, p {
         font-size: 1.2rem !important;
     }
 

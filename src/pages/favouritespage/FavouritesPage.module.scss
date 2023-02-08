@@ -1,20 +1,37 @@
 .FavouritesContainer {
-    min-height: 100vh;
-    background-color: rgba(0, 195, 255, 0.096);
+    min-height: 79vh;
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
 
     header {
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: rgba(255, 0, 0, 0.24);
-        margin-top: 10em;
-        margin: 10em 15em 0;
+        margin-top: 7.5rem;
+        width: 1200px;
+        margin: 7.5rem auto 1rem;
+
+        h2 {
+            text-transform: capitalize;
+            font-size: 3rem;
+            text-align: center;
+            padding: 0 2rem .5rem;
+            border: 1px solid rgb(0, 0, 0, .1);
+            box-shadow: 2.5px 2.5px 1px rgba(231, 215, 170, 0.95);
+            color: rgb(0, 0, 0, .7);
+        }
 
         button {
             align-self: flex-start;
-            padding: .5em;
             border: none;
-            cursor: pointer;
+            padding: .5rem;
+            background-color: white;
+            box-shadow: 0px 0px 1px var(--primary);
+            color: var(--primary);
+            transition: all .15s;
+            font-size: 1.1rem;
+            margin-top: 2rem;
         }
     }
 }

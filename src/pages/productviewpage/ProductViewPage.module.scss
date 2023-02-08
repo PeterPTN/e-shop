@@ -1,6 +1,4 @@
 .ProductView {
-    background-color: rgba(0, 0, 255, 0.075);
-    min-height: 100vh;
 
     p:first-letter {
         text-transform: capitalize;
@@ -10,30 +8,40 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 10em;
-        padding: 0 10em;
-        background-color: green;
+        width: 1600px;
+        margin: 7.5rem auto 1rem;
 
+         // consider mixin
         h2 {
             text-transform: capitalize;
-            font-style: italic;
+            font-size: 3rem;
+            text-align: center;
+            padding: 0 2rem .5rem;
+            border: 1px solid rgb(0, 0, 0, .1);
+            box-shadow: 2.5px 2.5px 1px rgba(231, 215, 170, 0.95);
+            color: rgb(0, 0, 0, .7);
         }
 
         button {
             align-self: flex-start;
+            border: none;
+            padding: .5rem;
+            background-color: white;
+            box-shadow: 0px 0px 1px var(--primary);
+            color: var(--primary);
+            transition: all .15s;
+            font-size: 1.1rem;
+        }
+
+        button:hover {
+            box-shadow: 0px 0px 2px var(--primary);
         }
     }
 
     main {
         display: flex;
-        padding: 0 10em;
-
-        img {
-            width: 20px;
-            cursor: pointer;
-            box-sizing: content-box;
-            padding: .15em;
-        }
+        max-width: 1600px;
+        margin: 0 auto;
     }
 }
 
@@ -66,13 +74,80 @@
 
 .Images {
     flex: 1;
-    background-color: rgba(255, 0, 0, 0.089);
-    min-height: 70vh;
+    height: 38.5em;
+    display: flex;
+    background-color: rgb(240, 240, 240);
+    padding: .5rem;
+    column-gap: .5rem;
+
+    div {
+        display: flex;
+        align-items: flex-start;
+
+        img {
+            cursor: pointer;
+            height: 150px;
+            width: 100%;
+        }
+    }
+
+    .FatImage {
+        height: 100%;
+        width: 100%;
+        background-color: white;
+        object-fit: contain;
+    }
 }
 
 .Info {
     flex: 1;
-    background-color: rgba(255, 255, 0, 0.39);
+    padding: .75rem 1.5rem;
+    border: 1px solid rgb(0, 0, 0, .05);
+    border-left: none;
+
+    * {
+        margin-bottom: .75rem;
+    }
+
+    p:nth-child(5) {
+        font-weight: bold;
+        color: var(--primary);
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: 1.25rem;
+        text-transform: capitalize;
+    }
+
+    h4 {
+        font-size: 1rem;
+        text-transform: capitalize;
+        text-decoration: underline;
+    }
+
+    img {
+        width: 20px;
+        cursor: pointer;
+    }
+}
+
+.SizeChart {
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.RelatedProducts {
+
+    img {
+        height: 50px;
+        width: 50px;
+        object-fit: contain;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.082);
+    }
 }
 
 .OutOfStock {
@@ -86,6 +161,33 @@
 
 .StarFalse {
     animation: loadOut .075s forwards;
+}
+
+.Form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    label {
+        font-size: 1rem;
+        text-transform: capitalize;
+        text-decoration: underline;
+        font-weight: bold;
+    }
+
+    input[type=submit] {
+        cursor: pointer;
+        background-color: white;
+        padding: .25rem .5rem;
+        border: 1px solid rgb(0, 0, 0, .3);
+        margin: 0;
+    }
+}
+
+.Warning {
+    background-color: rgb(228, 183, 183);
+    padding: .25rem .5rem;
+    width: fit-content;
 }
 
 @keyframes loadIn {

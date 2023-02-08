@@ -15,6 +15,7 @@
   list-style: none;
   font-family: 'Quicksand', sans-serif;
   --primary: rgb(207, 175, 88);
+  --warning: rgb(228, 183, 183);
 }
 
 .text-center {

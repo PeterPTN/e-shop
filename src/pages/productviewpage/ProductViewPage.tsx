@@ -6,10 +6,10 @@ import { LoaderContext } from '../../context/LoaderProvider';
 import { HeaderToggleContext } from '../../context/HeaderToggleProvider';
 import { ProductTypeContext } from '../../context/ProductTypeProvider';
 import { setFavouriteProduct } from '../../services/firebase-utils';
+import { CartTotalContext } from '../../context/CartTotalProvider';
 import styles from './ProductViewPage.module.scss';
 import Loader from '../loaderpage/Loader';
 import star from '../../assets/svgs/star.svg';
-import { CartTotalContext } from '../../context/CartTotalProvider';
 
 interface sizeObj {
   xs: number
@@ -35,6 +35,7 @@ const ProductViewPage = () => {
   const [relatedProducts, setRelatedProducts] = useState<ProductItems[]>();
   const [showWarning, setShowWarning] = useState(false);
   const [forceRender, setForceRender] = useState(false);
+  const [imageArray, setImageArray] = useState<string[]>([""]);
   const { setProductType } = useContext(ProductTypeContext);
   const { loader, setLoader } = useContext(LoaderContext);
   const { smallHeader, setSmallHeader } = useContext(HeaderToggleContext);
@@ -56,8 +57,10 @@ const ProductViewPage = () => {
     }
   }
 
-  const handleImageClick = (index: number) => {
-    // Change fat image based on useState array index
+  const handleImageClick = () => {
+    console.log(imageArray[1]);
+    console.log(imageArray[0]);
+    setImageArray([imageArray[1], imageArray[0]]);
   }
 
   const handleSubmit = (e: React.MouseEvent<HTMLFormElement>) => {
@@ -106,7 +109,6 @@ const ProductViewPage = () => {
         setProduct(generatedProduct);
       }
     }
-
     const generateRelatedProducts = async () => {
       if (productId) {
         const allProducts = await getAllProducts();
@@ -134,9 +136,12 @@ const ProductViewPage = () => {
     startUp();
   }, [forceRender])
 
-  // Favourite
+  // Favourite && image array
   useEffect(() => {
-    if (product) product.favourite ? setStarStyles([styles.StarTrue]) : setStarStyles([styles.StarFalse]);
+    if (product) {
+      product.favourite ? setStarStyles([styles.StarTrue]) : setStarStyles([styles.StarFalse]);
+      setImageArray([...product.img])
+    }
   }, [product])
 
   // Nav DOM stuff
@@ -145,6 +150,8 @@ const ProductViewPage = () => {
     setLoader(true);
     setTimeout(() => setLoader(false), 1000);
   }, []);
+
+  console.log(imageArray);
 
   return (
     <div>
@@ -155,7 +162,7 @@ const ProductViewPage = () => {
           <>
             <header>
               <h2>{product.item}</h2>
-              <button onClick={handleNavigateClick}>Back to browsing</button>
+              <button onClick={handleNavigateClick}>Back to products</button>
             </header>
 
             <main>
@@ -163,39 +170,44 @@ const ProductViewPage = () => {
                 <div className={styles.updateLoader}>
                   <div />
                 </div>}
-              {/* Images */}
+
               <div className={styles.Images}>
                 <div>
-                  {/* Maybe render from an array pass in index as arg */}
-                  <img onClick={() => handleImageClick(1)} src="" alt="" />
-                  <img onClick={() => handleImageClick(2)} src="" alt="" />
+                  <img onClick={handleImageClick} src={imageArray[1]} alt={product.item} />
                 </div>
 
-                {/* Fat image */}
-                <img src={product.img[0]} />
+                <img className={styles.FatImage} src={imageArray[0]} />
               </div>
 
-              {/* Info */}
               <div className={styles.Info}>
-                {/* Add description field for product*/}
                 <>
-                  <p>{product.item}</p>
+                  <img src={star} className={starStyles.join(" ")} onClick={handleFavouriteClick} />
+                  <h3>{product.item}</h3>
+                  <h4>Product Details:</h4>
                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Consequatur est soluta molestiae autem? Natus magni ut,
                     illum eaque quasi ad ipsam, doloremque sequi fugit,
                     placeat cum distinctio dicta veniam non.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, facilis.
                   </p>
 
+                  <h4>Price:</h4>
                   <p>${product.price.toFixed(2)}</p>
-                  <p>colour: {product.color}</p>
-                  <img src={star} className={starStyles.join(" ")} onClick={handleFavouriteClick} />
 
-                  {relatedProducts && relatedProducts.length > 0 && relatedProducts.map(product => (
-                    <img onClick={() => handleRelatedProductClick(product.id)} key={product.id} src={product.img[0]} />
-                  ))}
+                  <h4>Colour:</h4>
+                  <p>{product.color}</p>
 
-                  <form onSubmit={handleSubmit}>
-                    <label htmlFor="sizes">Size</label>
+
+                  <h4>Related Products:</h4>
+                  <div className={styles.RelatedProducts}>
+                    {relatedProducts && relatedProducts.length > 0 && relatedProducts.map(product => (
+                      <img onClick={() => handleRelatedProductClick(product.id)} key={product.id} src={product.img[0]} />
+                    ))}
+                  </div>
+
+                  <form onSubmit={handleSubmit} className={styles.Form}>
+                    <label htmlFor="sizes">Sizes:</label>
+                    <p className={styles.SizeChart}>Sizing chart</p>
                     <select name="sizes" id="sizes">
                       <option value="">Please Select</option>
                       <option disabled={isNaN(product.sizes.xs) || productAmount.xs <= 0} value="xs">XS</option>
@@ -208,8 +220,7 @@ const ProductViewPage = () => {
                     <input type="submit" value="Add to cart" />
                   </form>
 
-                  {showWarning && <p>Please select from an available size</p>}
-
+                  {showWarning && <p className={styles.Warning}>Please select from an available size</p>}
                 </>
               </div>
             </main>

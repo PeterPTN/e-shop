@@ -1,17 +1,143 @@
 .CartProductCard {
-    background-color: rgba(255, 0, 0, 0.13);
-    min-width: 600px;
-    min-height: 200px;
     display: flex;
+    padding: .5rem;
+    border-bottom: 1px solid var(--primary);
 
-    div {
-        flex: 1;
-        border: 1px solid black;
+    h3,
+    p {
+        font-size: 1rem;
+        text-transform: capitalize;
+    }
+
+    button {
+        aspect-ratio: 1/1;
+        background-color: white;
+        box-shadow: 0px 0px 1px rgb(0, 0, 0, .9);
+    }
+
+    * {
+        line-height: 1;
+    }
+}
+
+.CartInfo {
+    display: flex;
+    flex: 1;
+
+}
+
+.CartChanger {
+    display: flex;
+    justify-content: space-between;
+    flex: 2;
+
+    button {
+        border: none;
+        padding: .5em;
+    }
+}
+
+.Image {
+    background-color: white;
+
+    img {
+        height: 150px;
+        width: 100%;
+        object-fit: contain;
+    }
+}
+
+.Info {
+    flex: 1;
+    padding: .25rem .5rem;
+
+    * {
+        margin-bottom: .5rem;
+    }
+}
+
+.Quantity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    * {
+        margin-bottom: .5rem;
+    }
+
+    // Insufficient stock
+    p:nth-child(2) {
+        background-color: var(--warning);
+        padding: .25rem .5rem;
+        font-size: .95;
+    }
+}
+
+.LinePrice, .UnitPrice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    * {
+        margin-bottom: .5rem;
+    }
+}
+
+.Remove {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    * {
+        margin-bottom: .5rem;
     }
 }
 
 .FadeOut {
     animation: fade .5s linear forwards;
+}
+
+.hideCancelModal {
+    user-select: none;
+    visibility: hidden;
+}
+
+.showCancelModal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        column-gap: 1rem;
+    }
+
+    button {
+        width: fit-content;
+        aspect-ratio: 2/1;
+        cursor: pointer;
+    }
+
+    button:last-child {
+        background-color: rgba(255, 0, 0, 0.795);
+        color: rgb(255, 255, 255, .9);
+    }
+
+    * {
+        cursor: default;
+        margin-bottom: .5rem;
+    }
+}
+
+.hideUnavailableModal {
+    visibility: hidden;
+}
+
+.showUnavailableModal {
+    visibility: visible;
 }
 
 @keyframes fade {
@@ -32,31 +158,3 @@
         visibility: collapse;
     }
 }
-
-.CartThings {
-    display: flex;
-    align-items: center;
-    column-gap: 1em;
-
-    button {
-        border: none;
-        padding: .5em;
-    }
-}
-
-.hideCancelModal {
-    display: none;
-}
-
-.showCancelModal {
-    display: flex;
-}
-
-.hideUnavailableModal {
-    display: none;
-}
-
-.showUnavailableModal {
-    display: flex;
-}
-

@@ -14,6 +14,7 @@ import SizeFilterProvider from './context/SizeFilterProvider';
 import FavouritesPage from './pages/favouritespage/FavouritesPage';
 import LoaderProvider from './context/LoaderProvider';
 import CartTotalProvider from './context/CartTotalProvider';
+import TotalPriceProvider from './context/TotalPriceProvider';
 
 function App() {
   const router = createBrowserRouter([
@@ -50,7 +51,8 @@ function App() {
     ColorFilterProvider,
     SizeFilterProvider,
     CartTotalProvider,
-    LoaderProvider
+    LoaderProvider,
+    TotalPriceProvider
   ]);
 
   return (
