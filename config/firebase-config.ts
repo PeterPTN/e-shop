@@ -13,14 +13,6 @@ const firebaseConfig = {
     storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
     messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
     appId: import.meta.env.VITE_FIREBASE_APP_ID
-   /*
-    apiKey: "AIzaSyAlP1gxNW4K79TzRkgSCLIBHTfBMJFRKqk",
-    authDomain: "eshop-df1fc.firebaseapp.com",
-    projectId: "eshop-df1fc",
-    storageBucket: "eshop-df1fc.appspot.com",
-    messagingSenderId: "4972157936",
-    appId: "1:4972157936:web:fda83d9a201095b6eedb35"
-    */
 };
 
 // Initialize Firebase
