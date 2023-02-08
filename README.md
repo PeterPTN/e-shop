@@ -1,48 +1,31 @@
-# React e-cShop Website
+# For The Boys - Menswear - e-Commerce App
 
-## Outline
+A React SPA made with Vite/React+Typescript. 
 
-This project is designed to reinforce your React learnings and make sure that you are comfortable with most aspect of the framework.
-With this project you will practice how to:
+Check it out here: https://menswear-ftb.netlify.app/
 
--   Fetch Data within a React App
--   Use react-router-dom
--   Use Firebase/Firestore
+(Styling and cleanup/refactoring underway).
 
-## MVP
+###Functionalities
+Cart:
+- increment and decrement product quantities - with checks to prevent increments over stock values and warnings to remove item if under 1.
+- remove product
+- calculate unit price, line price and total cost
+- checkout is a dummy button
+- number of items in cart is tracked and displayed
 
-At a minimum your e-shop website should have two pages:
+Favourite:
+- bool values exist in database
+- simple toggle to add or remove
 
--   Home Page
-    -   This will contain:
-        -   A Grid of products
-        -   Carousel of featured products
-        -   Product Page (with id parameter) Similar to a product page on another site, allows you to add to cart and select product variants
--   All products should be stored in Firestore:
-    -   You should store the following information:
-        -   quantity
-        -   variants (could be colors, sizes, etc)
-        -   price per unit
-        -   name
-        -   image url
-        -   favourited or not (boolean)
-            All data should be stored in Firestore and fetched by the frontend, there should be NO static product data in the react application
+Product filters:
+- defaults to display "all", it can be changed to either "tops" or "bottoms"
+- can be sorted by lowest or highest price
+- can be filtered by a single color
+- can be filered by a single size
+- all 4 filters aggregate
 
-### Bonus
-
-Using Firestore and react create, a cart system. Create a cart page in your react app Add logic to prevent users from adding items to cart that are no longer in stock. You will have to check the current cart and the product quantity Cart page should have the following:
-
--   List of products in cart
-
-    -   Ability to change quantity of products in cart
-    -   Ability to remove items from cart
-
--   TIPS :
-
-1. Make sure your site is scoped to one category of products
-
-## Useful links
-
--   [React-router-dom](https://reactrouter.com/docs/en/v6/getting-started/overview)
--   [Dummy JSON](https://dummyjson.com/)
--   [Fake Store](https://fakestoreapi.com/)
+Product view:
+- users can only add based on stock levels
+- option to click on related product (same product different color)
+- on click event to change photo                                               
