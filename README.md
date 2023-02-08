@@ -6,7 +6,7 @@ Check it out here: https://menswear-ftb.netlify.app/
 
 (Styling and cleanup/refactoring underway).
 
-###Functionalities
+## Functionalities
 Cart:
 - increment and decrement product quantities - with checks to prevent increments over stock values and warnings to remove item if under 1.
 - remove product
