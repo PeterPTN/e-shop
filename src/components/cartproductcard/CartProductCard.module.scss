@@ -44,6 +44,7 @@
         height: 150px;
         width: 100%;
         object-fit: contain;
+        cursor: pointer;
     }
 }
 
@@ -94,7 +95,7 @@
 }
 
 .FadeOut {
-    animation: fade .5s linear forwards;
+    display: none;
 }
 
 .hideCancelModal {
@@ -138,23 +139,4 @@
 
 .showUnavailableModal {
     visibility: visible;
-}
-
-@keyframes fade {
-    0% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0;
-        display: none;
-        visibility: collapse;
-    }
-
-    100% {
-        opacity: 0;
-        position: absolute;
-        display: none;
-        visibility: collapse;
-    }
 }

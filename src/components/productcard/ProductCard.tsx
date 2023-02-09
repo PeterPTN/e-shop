@@ -32,7 +32,7 @@ const ProductCard = ({ product, isFavourited }: Props) => {
         const className = starStyles.toString().match(/[a-zA-Z]+/);
         if (className) className[0] === "StarTrue" ? setStarStyles([styles.StarFalse]) : setStarStyles([styles.StarTrue]);
         // Makes card disappear if from favouriteDisplay
-        if (isFavourited) setProductCardStyles([styles.ProductCard, styles.ProductCardGone])
+        if (isFavourited) setProductCardStyles([styles.ProductCardGone])
     }
 
     useEffect(() => {

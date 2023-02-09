@@ -12,6 +12,7 @@
     border-bottom: 1px solid rgba(231, 215, 170, 0.65);
     box-shadow: 0px 0px 1px rgb(0, 0, 0, .4);
 
+
     img {
         cursor: pointer;
     }
@@ -70,18 +71,7 @@
 }
 
 .ProductCardGone {
-    animation: getOut .225s forwards ease-in;
-}
-
-@keyframes getOut {
-    0% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-        visibility: collapse;
-    }
+    display: none;
 }
 
 @keyframes loadIn {

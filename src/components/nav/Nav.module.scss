@@ -8,37 +8,48 @@
 
     a,
     p {
-        color: rgb(155, 155, 155);
+        color: rgb(165, 165, 165, .75);
         padding: 5px 0;
         transition: .15s all;
         font-size: 1.5rem;
-        border-bottom: 2px solid rgb(155, 155, 155, .65);
+        border-bottom: 2px solid rgb(165, 165, 165, .4);
         transition: all .15s;
     }
 
-    p{cursor: pointer;}
+    p {
+        cursor: pointer;
+    }
 
 
-    a:hover, p:hover {
-        color: rgb(85, 85, 85);
-        border-bottom: 2px solid rgba(99, 99, 99, 0.9);
+    a:hover,
+    p:hover {
+        color: rgb(83, 83, 74);
+        border-bottom: 2px solid rgb(82, 82, 72);
     }
 }
 
 .CartNumber {
-
     &:first-letter {
         color: var(--primary);
         text-shadow: none;
     }
 
     border-bottom: 2px solid var(--primary) !important;
+
+    &:hover:first-letter {
+        color: rgb(83, 83, 74);
+    }
+
+    &:hover {
+        border-bottom: 2px solid rgb(82, 82, 72) !important;
+    }
 }
 
 .SmallNav {
     margin: 1.5rem 1.5rem 0 0 !important;
 
-    a, p {
+    a,
+    p {
         font-size: 1.2rem !important;
     }
 

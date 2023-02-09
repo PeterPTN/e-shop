@@ -132,7 +132,6 @@ const ProductViewPage = () => {
       await generateProduct();
       await generateRelatedProducts();
     }
-
     startUp();
   }, [forceRender])
 
@@ -150,8 +149,6 @@ const ProductViewPage = () => {
     setLoader(true);
     setTimeout(() => setLoader(false), 1000);
   }, []);
-
-  console.log(imageArray);
 
   return (
     <div>
@@ -181,8 +178,7 @@ const ProductViewPage = () => {
 
               <div className={styles.Info}>
                 <>
-                  <img src={star} className={starStyles.join(" ")} onClick={handleFavouriteClick} />
-                  <h3>{product.item}</h3>
+                  <h3><img src={star} className={starStyles.join(" ")} onClick={handleFavouriteClick} />{product.item}</h3>
                   <h4>Product Details:</h4>
                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Consequatur est soluta molestiae autem? Natus magni ut,

@@ -1,12 +1,11 @@
 .ProductDisplay {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0,1fr));
     gap: 1.5em;
     background-color: white;
     animation: loadIn .4s forwards linear;
     margin: 0 auto;
     max-width: 1600px;
-    
 }
 
 @keyframes loadIn {
