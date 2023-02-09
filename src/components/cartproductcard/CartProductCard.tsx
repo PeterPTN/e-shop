@@ -68,6 +68,7 @@ const CartProductCard = ({ product }: Props) => {
     const handleProductRemoveClick = () => {
         removeProductFromCart(product.id, product.type, chosenSize, withinCart.current);
         setShowProductCard(false);
+        setTotalPrice(current => current - withinCart.current * product.price);
         setCartNumber(current => current - withinCart.current);
     }
 
@@ -91,7 +92,7 @@ const CartProductCard = ({ product }: Props) => {
         setLinePrice(withinCart.current * product.price);
     }, [withinCart.current])
 
-    // Atomise all this 
+    // Atomise all this (eventually)
     return (
         <div className={productCardStyles.join(" ")}>
             <div className={styles.CartInfo}>
@@ -104,6 +105,8 @@ const CartProductCard = ({ product }: Props) => {
                     <p>Size: {product.chosenSize}</p>
                     <p>Colour: {product.color}</p>
                 </div>
+
+
             </div>
 
             <div className={styles.CartChanger}>

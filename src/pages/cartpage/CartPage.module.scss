@@ -9,10 +9,8 @@
         flex-direction: column;
         align-items: center;
         margin: 7.5rem auto 1rem;
-        width: 1200px;
 
         button {
-            align-self: flex-start;
             border: none;
             padding: .5rem;
             background-color: white;
@@ -20,10 +18,10 @@
             color: var(--primary);
             transition: all .15s;
             font-size: 1.1rem;
-            margin-top: 2rem;
+            margin-top: 1rem;
         }
 
-        // consider mixin
+        // Consider mixin
         h2 {
             text-transform: capitalize;
             font-size: 3rem;
@@ -36,36 +34,29 @@
     }
 }
 
-.ReviewCart,
-.CheckOut {
-    width: 1200px;
-}
 
 .ReviewCart {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    margin-top: 1.5em;
-    border: 1px solid rgb(0, 0, 0, .1)
+    border: 1px solid rgb(0, 0, 0, .1);
+    margin: 0 1rem;
 }
 
 .CheckOut {
     display: flex;
-    justify-content: flex-end;
     margin-top: 2rem;
+    flex-direction: column;
 
-    h3 {
+
+    h4 {
         font-weight: normal;
         font-size: 1.1rem;
     }
-
-    div {
-        width: 25%;
-    }
-
     span {
         display: flex;
         justify-content: space-between;
+        column-gap: 5rem;
     }
 
     button {
@@ -74,5 +65,6 @@
         color: white;
         padding: .5rem 1rem;
         margin: 1rem auto;
+        font-size: 1.05rem;
     }
 }

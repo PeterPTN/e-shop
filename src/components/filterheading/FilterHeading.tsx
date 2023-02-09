@@ -22,9 +22,9 @@ interface Props {
 }
 
 const FilterHeading = ({ filterData, onListClick, showList }: Props) => {
-    const { colorFilter, setColorFilter } = useContext(ColorFilterContext);
-    const { sizeFilter, setSizeFilter } = useContext(SizeFilterContext);
-    const { priceFilter, setPriceFilter } = useContext(PriceFilterContext)
+    const { setColorFilter } = useContext(ColorFilterContext);
+    const { setSizeFilter } = useContext(SizeFilterContext);
+    const { setPriceFilter } = useContext(PriceFilterContext)
     const { productType, setProductType } = useContext(ProductTypeContext);
     const { listHeading, listItems } = filterData;
     const listTarget = useRef<any | null>({
@@ -113,11 +113,6 @@ const FilterHeading = ({ filterData, onListClick, showList }: Props) => {
         setColorFilter("");
         setSizeFilter("")
     }, [])
-
-    // console.log(priceFilter, "price");
-    // console.log(productType, "product");
-    // console.log(colorFilter, "color");
-    // console.log(sizeFilter, "size");
 
     return (
         <li className={styles.FilterType} onClick={onListClick}>

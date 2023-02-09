@@ -2,10 +2,16 @@
     display: flex;
     column-gap: 1em;
 
+    @media screen and (max-width: 1250px) {
+        flex-direction: column;
+        height: 100vh;
+        row-gap: 1em;
+        margin: 0 1rem;
+    }
+
     div {
         flex: 1;
         height: 60vh;
-        background-color: rgba(255, 0, 0, 0.096);
         position: relative;
 
         button {
@@ -28,6 +34,20 @@
             outline: none;
             box-shadow: 0px 0px 16px rgb(0, 0, 0, .15);
         }
+
+        @media screen and (max-width: 1250px) {
+            background-position: bottom;
+
+            button {
+                font-size: 1rem;
+                bottom: 2.5em;
+                box-shadow: 0px 0px 16px rgb(0, 0, 0, .21);
+            }
+
+            button:focus {
+                box-shadow: 0px 0px 16px rgb(0, 0, 0, .31);
+            }
+        }
     }
 
     div:first-child {
@@ -40,5 +60,12 @@
         background: url("../../assets/images/shopBottomsOne.jpg");
         background-repeat: no-repeat;
         background-size: cover;
+    }
+
+    div:first-child,
+    div:last-child {
+        @media screen and (max-width: 1250px) {
+            background-position: center;
+        }
     }
 }

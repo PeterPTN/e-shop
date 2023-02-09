@@ -25,13 +25,12 @@ const ProductCard = ({ product, isFavourited }: Props) => {
     }
 
     const handleFavouriteClick = (e: React.MouseEvent<HTMLElement>) => {
-        // Prevent click bubbling to parent click event
         e.stopPropagation();
         setFavouriteProduct(product.id, product.type, product.favourite);
 
         const className = starStyles.toString().match(/[a-zA-Z]+/);
         if (className) className[0] === "StarTrue" ? setStarStyles([styles.StarFalse]) : setStarStyles([styles.StarTrue]);
-        // Makes card disappear if from favouriteDisplay
+        // For favourites display
         if (isFavourited) setProductCardStyles([styles.ProductCardGone])
     }
 

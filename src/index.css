@@ -49,10 +49,13 @@ button {
   -webkit-line-clamp: 2;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 /* 
 font-family: 'Cormorant Garamond', serif;
 font-family: 'Quicksand', sans-serif;
-font-family: 'Shadows Into Light', cursive;
 */
 
 h2 {

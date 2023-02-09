@@ -1,9 +1,5 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { checkIfFilterList } from '../../services/dom-utils';
-import { ProductTypeContext } from '../../context/ProductTypeProvider';
-import { PriceFilterContext } from '../../context/PriceFilterProvider';
-import { SizeFilterContext } from '../../context/SizeFilterProvider';
-import { ColorFilterContext } from '../../context/ColorFilterProvider';
 import { FILTERS } from '../../data/constants';
 import FilterHeading from '../filterheading/FilterHeading';
 import styles from './ProductFilter.module.scss';
@@ -47,7 +43,6 @@ const ProductFilter = () => {
 
         return () => document.removeEventListener("click", handleClick);
     }, [showList])
-
 
     return (
         <>

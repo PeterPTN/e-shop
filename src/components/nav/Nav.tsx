@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { HeaderToggleContext } from '../../context/HeaderToggleProvider';
 import { CartTotalContext } from '../../context/CartTotalProvider';
 import { getAllProducts } from '../../services/firebase-utils';
@@ -6,18 +6,31 @@ import { ProductTypeContext } from '../../context/ProductTypeProvider';
 import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import styles from './Nav.module.scss';
+import burger from '../../assets/svgs/burger.svg';
 
 const Nav = () => {
+    const [navStyles, setNavStyles] = useState([styles.Nav]);
+    const [burgerStyles, setBurgerStyles] = useState([styles.Burger]);
     const { cartNumber, setCartNumber } = useContext(CartTotalContext);
     const { smallHeader } = useContext(HeaderToggleContext);
     const { setProductType } = useContext(ProductTypeContext);
-    const NavStyles = smallHeader ? [styles.Nav, styles.SmallNav] : [styles.Nav];
     const CartStyles = cartNumber > 0 ? [styles.CartNumber] : [];
     const navigate = useNavigate();
 
-    const handleClick = () => {
+    const handleNavigateClick = () => {
         setProductType("all");
         navigate("/products");
+    }
+
+    const handleBurgerClick = () => {
+        if (smallHeader) {
+            setNavStyles(current => [...current, styles.SmallNavFlyIn])
+            setBurgerStyles(current => [...current, styles.SmallBurgerFlyOut]);
+        }
+        else {
+            setNavStyles(current => [...current, styles.NavFlyIn])
+            setBurgerStyles(current => [...current, styles.BurgerFlyOut]);
+        };
     }
 
     useEffect(() => {
@@ -32,13 +45,47 @@ const Nav = () => {
         generateProducts();
     }, [])
 
+    useEffect(() => {
+        if (smallHeader) {
+            setNavStyles([styles.Nav, styles.SmallNav]);
+            setBurgerStyles([styles.Burger, styles.SmallBurger]);
+        } else {
+            setBurgerStyles([styles.Burger]);
+            setNavStyles([styles.Nav]);
+        }
+    }, [smallHeader])
+
+    useEffect(() => {
+        if (navStyles.length === 2 && !smallHeader || navStyles.length === 3) {
+            const handleClick = (e: any) => {
+                const target = e.target as HTMLElement;
+                // Hamburger icon parent is header - header has nav and burger
+                if (target.parentElement && target.parentElement.localName === "header") return;
+                if (smallHeader) {
+                    setNavStyles([styles.Nav, styles.SmallNav]);
+                    setBurgerStyles([styles.Burger, styles.SmallBurger]);
+                } else {
+                    setNavStyles([styles.Nav])
+                    setBurgerStyles([styles.Burger]);
+                };
+            }
+
+            document.addEventListener("click", handleClick);
+
+            return () => document.removeEventListener("click", handleClick);
+        }
+    }, [navStyles])
+
     return (
-        // Placeholders add images
-        <nav className={NavStyles.join(" ")}>
-            <NavLink className={CartStyles.join("")} to="/cart">{cartNumber > 0 && cartNumber} cart</NavLink>
-            <p onClick={handleClick}>products</p>
-            <NavLink to="/favourites">favourites</NavLink>
-        </nav>
+        <>
+            <nav className={navStyles.join(" ")}>
+                <NavLink className={CartStyles.join("")} to="/cart">{cartNumber > 0 && cartNumber} cart</NavLink>
+                <p onClick={handleNavigateClick}>products</p>
+                <NavLink to="/favourites">favourites</NavLink>
+            </nav>
+
+            <img src={burger} alt="burger menu" className={burgerStyles.join(" ")} onClick={handleBurgerClick} />
+        </>
     )
 }
 

@@ -2,23 +2,21 @@
     height: 100vh;
     width: 100%;
     background-color: rgb(255, 255, 255);
-    // Make timeout after animation duration
     animation: loader .75s linear forwards;
     position: absolute;
+    opacity: 0;
 }
 
 @keyframes loader {
     0% {
-        opacity: .7;
-        z-index: 110;
+        opacity: .5;
     }
 
-    60% {
+    70% {
         opacity: 0;
     }
 
     100% {
         display: none;
-        z-index: -110;
     }
 }

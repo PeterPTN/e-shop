@@ -9,7 +9,6 @@
         flex-direction: column;
         align-items: center;
         margin-top: 7.5rem;
-        width: 1200px;
         margin: 7.5rem auto 1rem;
 
         h2 {
@@ -23,7 +22,6 @@
         }
 
         button {
-            align-self: flex-start;
             border: none;
             padding: .5rem;
             background-color: white;
@@ -31,7 +29,8 @@
             color: var(--primary);
             transition: all .15s;
             font-size: 1.1rem;
-            margin-top: 2rem;
+            margin-top: 1rem;
+            margin-left: 1rem;
         }
     }
 }

@@ -1,6 +1,6 @@
-import { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { ProductTypeContext } from '../../context/ProductTypeProvider';
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
 import styles from './ShopThis.module.scss';
 
 const ShopThis = () => {

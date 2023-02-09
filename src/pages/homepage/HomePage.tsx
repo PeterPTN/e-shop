@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import { HeaderToggleContext } from '../../context/HeaderToggleProvider';
 import { ProductTypeContext } from '../../context/ProductTypeProvider';
 import { LoaderContext } from '../../context/LoaderProvider';
-import styles from './HomePage.module.scss';
-import ShopThis from '../../components/shopthis/ShopThis';
-import Loader from '../loaderpage/Loader';
 import FeatureDisplay from '../../containers/featuredisplay/FeatureDisplay';
+import ShopThis from '../../components/shopthis/ShopThis';
+import styles from './HomePage.module.scss';
+import Loader from '../loaderpage/Loader';
 
 const HomePage = () => {
     const { loader, setLoader } = useContext(LoaderContext);
@@ -22,7 +22,7 @@ const HomePage = () => {
     useEffect(() => {
         if (smallHeader) setSmallHeader(false);
         setLoader(true);
-        setTimeout(() => setLoader(false), 1000);
+        setTimeout(() => setLoader(false), 760);
     }, []);
 
     return (

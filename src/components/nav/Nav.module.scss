@@ -5,21 +5,37 @@
     z-index: 100;
     align-self: flex-start;
     margin: 4rem 4rem 0 0;
+    transition: all .25s ease-out;
+
+    @media screen and (max-width: 1500px) {
+        margin: 4rem 2rem 0 0;
+    }
+
+    @media screen and (max-width: 1150px) {
+        position: absolute;
+        flex-direction: column;
+        left: -200px;
+        top: 9.5rem;
+    }
+
+    @media screen and (max-width: 950px) {
+        top: 3.5rem;
+    }
 
     a,
     p {
         color: rgb(165, 165, 165, .75);
         padding: 5px 0;
         transition: .15s all;
-        font-size: 1.5rem;
+        font-size: calc(17px + .5vw);
         border-bottom: 2px solid rgb(165, 165, 165, .4);
-        transition: all .15s;
+        transition: color .15s;
+        transition: border .15s;
     }
 
     p {
         cursor: pointer;
     }
-
 
     a:hover,
     p:hover {
@@ -27,6 +43,95 @@
         border-bottom: 2px solid rgb(82, 82, 72);
     }
 }
+
+.SmallNav {
+    margin: 1.5rem 1.5rem 0 0 !important;
+
+    a, p {
+        font-size: 1.25rem;
+    }
+
+    @media screen and (max-width: 1150px) {
+        margin: 0 !important;
+        right: -200px;
+        top: 1rem;
+        left: auto;
+    }
+}
+
+.NavFlyIn {
+    left: 2.25rem;
+    top: 9.5rem;
+    backdrop-filter: blur(40px);
+    border-radius: 2em;
+    padding: .5rem;
+
+    @media screen and (max-width: 950px) {
+        top: 3.5rem;
+        left: 1rem;
+    }
+}
+
+.SmallNavFlyIn {
+    right: 1rem;
+    top: 1rem;
+    backdrop-filter: blur(40px);
+    border-radius: 2em;
+    padding: .5rem;
+}
+
+.Burger {
+    position: absolute;
+    left: 2.25rem;
+    top: calc(8rem + 7vw);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 50px;
+    width: 60px;
+    cursor: pointer;
+    row-gap: 7.5px;
+    display: none;
+    transition: all .25s;
+
+    @media screen and (max-width: 1150px) {
+        display: flex;
+    }
+
+    @media screen and (max-width: 950px) {
+        height: 40px;
+        width: fit-content;
+        top: 9.5rem;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+
+    @media screen and (max-width: 550px) {
+        top: 6.5rem;
+    }
+}
+
+.SmallBurger {
+    right: .5rem;
+    top: 1rem;
+    left: auto;
+}
+
+.BurgerFlyOut {
+    left: -200px;
+
+    @media screen and (max-width: 950px) {
+        left: 0;
+        opacity: .1;
+        user-select: none;
+    }
+}
+
+.SmallBurgerFlyOut {
+    right: -200px;
+}
+
 
 .CartNumber {
     &:first-letter {
@@ -43,14 +148,4 @@
     &:hover {
         border-bottom: 2px solid rgb(82, 82, 72) !important;
     }
-}
-
-.SmallNav {
-    margin: 1.5rem 1.5rem 0 0 !important;
-
-    a,
-    p {
-        font-size: 1.2rem !important;
-    }
-
 }

@@ -6,14 +6,14 @@ import { getAllProducts } from '../../services/firebase-utils'
 import { LoaderContext } from '../../context/LoaderProvider';
 import { ProductTypeContext } from '../../context/ProductTypeProvider';
 import { CartTotalContext } from '../../context/CartTotalProvider';
+import { TotalPriceContext } from '../../context/TotalPriceProvider';
 import CartProductCard from '../../components/cartproductcard/CartProductCard';
 import styles from './CartPage.module.scss';
 import Loader from '../loaderpage/Loader';
-import { TotalPriceContext } from '../../context/TotalPriceProvider';
 
 const CartPage = () => {
   const [products, setProducts] = useState<ProductItems[]>([]);
-  const { totalPrice } = useContext(TotalPriceContext);
+  const { totalPrice, setTotalPrice } = useContext(TotalPriceContext);
   const { cartNumber } = useContext(CartTotalContext);
   const { loader, setLoader } = useContext(LoaderContext);
   const { smallHeader, setSmallHeader } = useContext(HeaderToggleContext);
@@ -49,6 +49,10 @@ const CartPage = () => {
     if (!smallHeader) setSmallHeader(true);
     setLoader(true);
     setTimeout(() => setLoader(false), 1000);
+
+    return () => {
+      setTotalPrice(0);
+    }
   }, [])
 
   return (
@@ -70,13 +74,11 @@ const CartPage = () => {
         </div>
 
         <div className={styles.CheckOut}>
-          <div>
-            <span><h3>Total Items: </h3><h3>{cartNumber}</h3></span>
-            <span><h3>Subtotal: </h3><h3>${subTotal.toFixed(2)}</h3></span>
-            <span><h3>GST: </h3><h3>${gst.toFixed(2)}</h3></span>
-            <span><h3>Grand Total: </h3><h3>${totalPrice.toFixed(2)}</h3></span>
+            <span><h4>Total Items: </h4><h4>{cartNumber}</h4></span>
+            <span><h4>Subtotal: </h4><h4>${subTotal.toFixed(2)}</h4></span>
+            <span><h4>GST: </h4><h4>${gst.toFixed(2)}</h4></span>
+            <span><h4>Grand Total: </h4><h4>${totalPrice.toFixed(2)}</h4></span>
             <span><button>Checkout</button></span>
-          </div>
         </div>
       </div>
     </>

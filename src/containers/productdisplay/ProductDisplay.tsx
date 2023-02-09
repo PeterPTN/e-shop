@@ -1,8 +1,8 @@
 import type { ProductsArray } from '../../lib/types';
-import ProductCard from '../../components/productcard/ProductCard';
-import styles from './ProductDisplay.module.scss';
 import { useState } from 'react';
 import FetchingDisplay from '../fetchingdisplay/FetchingDisplay';
+import ProductCard from '../../components/productcard/ProductCard';
+import styles from './ProductDisplay.module.scss';
 
 interface Props {
   products: ProductsArray

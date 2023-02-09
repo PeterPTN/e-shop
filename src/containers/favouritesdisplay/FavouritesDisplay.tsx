@@ -1,7 +1,7 @@
 import { ProductsArray } from '../../lib/types';
 import { useState } from 'react'
-import ProductCard from '../../components/productcard/ProductCard';
 import FetchingDisplay from '../fetchingdisplay/FetchingDisplay';
+import ProductCard from '../../components/productcard/ProductCard';
 import styles from './FavouritesDisplay.module.scss';
 
 interface Props {

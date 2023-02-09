@@ -32,6 +32,12 @@
         position: absolute;
         width: 90%;
         height: 90%;
-        object-fit: cover;
+        object-fit: contain;
+        background-color: white;
+    }
+
+    @media screen and (max-width: 1050px) {
+        box-shadow: none;
+        min-height: 30em;
     }
 }

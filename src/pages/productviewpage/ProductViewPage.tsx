@@ -1,12 +1,12 @@
 import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState, useContext } from 'react'
 import { getProduct, addOneToCart, getAllProducts } from '../../services/firebase-utils';
-import { ProductItems } from '../../lib/types';
-import { LoaderContext } from '../../context/LoaderProvider';
+import { setFavouriteProduct } from '../../services/firebase-utils';
 import { HeaderToggleContext } from '../../context/HeaderToggleProvider';
 import { ProductTypeContext } from '../../context/ProductTypeProvider';
-import { setFavouriteProduct } from '../../services/firebase-utils';
 import { CartTotalContext } from '../../context/CartTotalProvider';
+import { LoaderContext } from '../../context/LoaderProvider';
+import { ProductItems } from '../../lib/types';
 import styles from './ProductViewPage.module.scss';
 import Loader from '../loaderpage/Loader';
 import star from '../../assets/svgs/star.svg';
@@ -151,7 +151,7 @@ const ProductViewPage = () => {
   }, []);
 
   return (
-    <div>
+    <>
       {loader && <Loader />}
       <div className={styles.ProductView}>
         {product
@@ -227,8 +227,7 @@ const ProductViewPage = () => {
           </div>
         }
       </div>
-
-    </div >
+    </>
   )
 }
 

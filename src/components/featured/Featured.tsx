@@ -1,8 +1,8 @@
-import styles from './Featured.module.scss';
-import { useNavigate } from 'react-router-dom'
-import { ProductItems } from '../../lib/types';
-import { useContext } from 'react';
 import { HeaderToggleContext } from '../../context/HeaderToggleProvider';
+import { ProductItems } from '../../lib/types';
+import { useNavigate } from 'react-router-dom'
+import { useContext } from 'react';
+import styles from './Featured.module.scss';
 
 interface Prop {
     product: ProductItems

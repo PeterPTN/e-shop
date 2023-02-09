@@ -3,6 +3,12 @@
     padding: .5rem;
     border-bottom: 1px solid var(--primary);
 
+    @media screen and (max-width: 750px) {
+        align-items: center;
+        flex-direction: column;
+        row-gap: 1rem;
+    }
+
     h3,
     p {
         font-size: 1rem;
@@ -24,6 +30,9 @@
     display: flex;
     flex: 1;
 
+    @media screen and (max-width: 750px) {
+        align-self: flex-start;
+    }
 }
 
 .CartChanger {
@@ -31,9 +40,23 @@
     justify-content: space-between;
     flex: 2;
 
+    @media screen and (max-width: 750px) {
+        column-gap: 1rem;
+    }
+
+    @media screen and (max-width: 550px) {
+        flex-wrap: wrap;
+        column-gap: 1rem;
+        justify-content: center;
+    }
+
     button {
         border: none;
         padding: .5em;
+    }
+
+    h3 {
+        text-align: center;
     }
 }
 
@@ -55,6 +78,8 @@
     * {
         margin-bottom: .5rem;
     }
+
+ 
 }
 
 .Quantity {
@@ -101,12 +126,21 @@
 .hideCancelModal {
     user-select: none;
     visibility: hidden;
+
+    @media screen and (max-width: 750px) {
+        order: 1;
+    }
 }
 
 .showCancelModal {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
+
+    @media screen and (max-width: 750px) {
+        order: 1;
+    }
 
 
     div {

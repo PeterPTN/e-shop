@@ -1,10 +1,10 @@
 import { HeaderToggleContext } from '../../context/HeaderToggleProvider';
 import { useContext, useEffect } from 'react'
 import { ProductTypeContext } from '../../context/ProductTypeProvider';
-import styles from './ProductsPage.module.scss';
-import ProductFilter from '../../components/productfilter/ProductFilter';
-import ProductDisplay from '../../containers/productdisplay/ProductDisplay';
 import useGenerateProducts from '../../hooks/useGenerateProducts';
+import ProductDisplay from '../../containers/productdisplay/ProductDisplay';
+import ProductFilter from '../../components/productfilter/ProductFilter';
+import styles from './ProductsPage.module.scss';
 
 const ProductsPage = () => {
   const { smallHeader, setSmallHeader } = useContext(HeaderToggleContext);
@@ -25,11 +25,11 @@ const ProductsPage = () => {
     <>
       
       <div className={styles.Products}>
-        <header>
+        <div className={styles.ProductsHeader}>
           <h2>{heading}</h2>
 
           <ProductFilter />
-        </header>
+        </div>
 
         <ProductDisplay products={products} />
       </div>
