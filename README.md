@@ -1,6 +1,7 @@
 # For The Boys - Menswear - e-Commerce App
 
 A React SPA made with Vite/React+Typescript with CRUD functionality using Google's Firebase Firestore.
+Styled with SASS.
 
 Check it out here: https://menswear-ftb.netlify.app/
 
