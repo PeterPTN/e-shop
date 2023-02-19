@@ -204,10 +204,17 @@
     }
 }
 
-.Warning {
-    background-color: rgb(228, 183, 183);
+.Warning, .Added {
     padding: .25rem .5rem;
     width: fit-content;
+}
+
+.Warning {
+    background-color: rgb(228, 183, 183);
+}
+
+.Added {
+    background-color: rgb(191, 228, 183);
 }
 
 @keyframes loadIn {

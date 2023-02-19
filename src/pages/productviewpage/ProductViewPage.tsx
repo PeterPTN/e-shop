@@ -36,6 +36,7 @@ const ProductViewPage = () => {
   const [showWarning, setShowWarning] = useState(false);
   const [forceRender, setForceRender] = useState(false);
   const [imageArray, setImageArray] = useState<string[]>([""]);
+  const [showAdded, setShowAdded] = useState(false);
   const { setProductType } = useContext(ProductTypeContext);
   const { loader, setLoader } = useContext(LoaderContext);
   const { smallHeader, setSmallHeader } = useContext(HeaderToggleContext);
@@ -95,8 +96,10 @@ const ProductViewPage = () => {
   const adder = async (chosenSize: keyof sizeObj) => {
     if (product && productAmount[chosenSize] !== 0) {
       setUpdateLoader(true);
+      setShowAdded(true);
       await addOneToCart(product.id, product.type, chosenSize);
       setTimeout(() => setUpdateLoader(false), 200);
+      setTimeout(() => setShowAdded(false), 1250);
     }
   }
 
@@ -217,6 +220,7 @@ const ProductViewPage = () => {
                   </form>
 
                   {showWarning && <p className={styles.Warning}>Please select from an available size</p>}
+                  {showAdded && <p className={styles.Added}>Product added to cart</p>}
                 </>
               </div>
             </main>

@@ -13,14 +13,7 @@ const Nav = () => {
     const [burgerStyles, setBurgerStyles] = useState([styles.Burger]);
     const { cartNumber, setCartNumber } = useContext(CartTotalContext);
     const { smallHeader } = useContext(HeaderToggleContext);
-    const { setProductType } = useContext(ProductTypeContext);
     const CartStyles = cartNumber > 0 ? [styles.CartNumber] : [];
-    const navigate = useNavigate();
-
-    const handleNavigateClick = () => {
-        setProductType("all");
-        navigate("/products");
-    }
 
     const handleBurgerClick = () => {
         if (smallHeader) {
@@ -80,7 +73,6 @@ const Nav = () => {
         <>
             <nav className={navStyles.join(" ")}>
                 <NavLink className={CartStyles.join("")} to="/cart">{cartNumber > 0 && cartNumber} cart</NavLink>
-                <p onClick={handleNavigateClick}>products</p>
                 <NavLink to="/favourites">favourites</NavLink>
             </nav>
 

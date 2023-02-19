@@ -24,11 +24,11 @@
 
     a,
     p {
-        color: rgb(165, 165, 165, .75);
+        color: rgb(0, 0, 0, .45);
+        border-bottom: 2px solid rgb(0, 0, 0, .2);
         padding: 5px 0;
         transition: .15s all;
         font-size: calc(17px + .5vw);
-        border-bottom: 2px solid rgb(165, 165, 165, .4);
         transition: color .15s;
         transition: border .15s;
     }
@@ -39,8 +39,8 @@
 
     a:hover,
     p:hover {
-        color: rgb(83, 83, 74);
-        border-bottom: 2px solid rgb(82, 82, 72);
+        color: rgb(0, 0, 0, .85);
+        border-color: rgb(0, 0, 0, .85);
     }
 }
 
