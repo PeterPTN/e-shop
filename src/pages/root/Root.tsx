@@ -22,7 +22,7 @@ const Root = () => {
             <Outlet />
 
             <footer className={styles.Footer}>
-                <span>&copy; 2023 <a href="https://pptn-web-dev.netlify.app/" target="_blank" rel="noopener noreferrer">Peter Nguyen</a></span>
+                <span>&copy; 2023 <a href="https://pptn-portfolio.netlify.app" target="_blank" rel="noopener noreferrer">Peter Nguyen</a></span>
             </footer>
         </>
     )
