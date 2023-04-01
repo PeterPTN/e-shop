@@ -1,3 +1,4 @@
+import type { Sizes } from '../../lib/types';
 import { addOneToCart, removeOneFromCart, removeProductFromCart } from '../../services/firebase-utils'
 import { useState, useContext, useEffect, useRef } from 'react';
 import { TotalPriceContext } from '../../context/TotalPriceProvider';
@@ -10,15 +11,8 @@ interface Props {
     product: ProductItems
 }
 
-interface Sizes {
-    xs: number
-    s: number
-    m: number
-    l: number
-    xl: number
-}
-
 const CartProductCard = ({ product }: Props) => {
+    const [error, setError] = useState<null | string>(null);
     const [showUnavailableModal, setShowUnavailableModal] = useState<boolean>(false);
     const [showCancelModal, setShowCancelModal] = useState<boolean>(false);
     const [showProductCard, setShowProductCard] = useState<boolean>(true);
@@ -36,25 +30,39 @@ const CartProductCard = ({ product }: Props) => {
     const navigate = useNavigate()
     let withinCart = useRef(0);
 
-    const handleProductDecrementClick = () => {
+    const handleProductDecrementClick = async () => {
+        let continueFlag = true;
         if (withinCart.current === 1) {
             setShowCancelModal(true);
             return;
         }
-        removeOneFromCart(product.id, product.type, chosenSize);
+        await removeOneFromCart(product.id, product.type, chosenSize)
+            .catch((e) => {
+                continueFlag = false;
+                setError("Something went wrong. Please try again later.")
+            })
+            .finally(() => setTimeout(() => setError(null), 2000));
+        if (!continueFlag) return;
         setCartNumber(current => current - 1);
         withinCart.current--
         setAvailableProducts(current => current + 1);
         setTotalPrice(current => current - product.price);
     }
 
-    const handleProductIncrementClick = () => {
+    const handleProductIncrementClick = async () => {
+        let continueFlag = true;
         if (availableProducts === 0) {
             setShowUnavailableModal(true);
             setTimeout(() => setShowUnavailableModal(false), 2000);
             return;
         }
-        addOneToCart(product.id, product.type, chosenSize);
+        await addOneToCart(product.id, product.type, chosenSize)
+            .catch((e) => {
+                continueFlag = false;
+                setError("Something went wrong. Please try again later.")
+            })
+            .finally(() => setTimeout(() => setError(null), 2000));
+        if (!continueFlag) return;
         setCartNumber(current => current + 1);
         withinCart.current++
         setAvailableProducts(current => current - 1);
@@ -65,8 +73,15 @@ const CartProductCard = ({ product }: Props) => {
         setShowCancelModal(false);
     }
 
-    const handleProductRemoveClick = () => {
-        removeProductFromCart(product.id, product.type, chosenSize, withinCart.current);
+    const handleProductRemoveClick = async () => {
+        let continueFlag = true;
+        await removeProductFromCart(product.id, product.type, chosenSize, withinCart.current)
+            .catch((e) => {
+                continueFlag = false;
+                setError("Something went wrong. Please try again later.")
+            })
+            .finally(() => setTimeout(() => setError(null), 2000));
+        if (!continueFlag) return;
         setShowProductCard(false);
         setTotalPrice(current => current - withinCart.current * product.price);
         setCartNumber(current => current - withinCart.current);
@@ -105,9 +120,9 @@ const CartProductCard = ({ product }: Props) => {
                     <p>Size: {product.chosenSize}</p>
                     <p>Colour: {product.color}</p>
                 </div>
-
-
             </div>
+
+            {error && <p className={styles.Error}>{error}</p>}
 
             <div className={styles.CartChanger}>
                 <div className={cancelModalStyles.join("")}>

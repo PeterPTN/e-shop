@@ -13,6 +13,7 @@ interface Props {
 }
 
 const ProductCard = ({ product, isFavourited }: Props) => {
+    const [error, setError] = useState<null | string>(null);
     const [starStyles, setStarStyles] = useState<string[]>([styles.StarFalse])
     const [productCardStyles, setProductCardStyles] = useState<string[]>([styles.ProductCard]);
     const { setSmallHeader } = useContext(HeaderToggleContext);
@@ -26,7 +27,9 @@ const ProductCard = ({ product, isFavourited }: Props) => {
 
     const handleFavouriteClick = (e: React.MouseEvent<HTMLElement>) => {
         e.stopPropagation();
-        setFavouriteProduct(product.id, product.type, product.favourite);
+        setFavouriteProduct(product.id, product.type, product.favourite)
+            .catch(error => setError("Could not favourite product"))
+            .finally(() => setTimeout(() => setError(null), 2000));
 
         const className = starStyles.toString().match(/[a-zA-Z]+/);
         if (className) className[0] === "StarTrue" ? setStarStyles([styles.StarFalse]) : setStarStyles([styles.StarTrue]);
@@ -46,7 +49,10 @@ const ProductCard = ({ product, isFavourited }: Props) => {
                 <img className={starStyles.join(" ")} src={star} />
             </div>
 
+            {error && <h4 className={styles.Error}>{error}</h4>}
+
             <img onClick={handleProductViewClick} className={styles.ProductImage} src={product.img[0]} />
+
 
             <div className={styles.Info}>
                 <p>{product.item}</p>

@@ -9,7 +9,7 @@ import styles from './ProductsPage.module.scss';
 const ProductsPage = () => {
   const { smallHeader, setSmallHeader } = useContext(HeaderToggleContext);
   const { productType } = useContext(ProductTypeContext);
-  const { products } = useGenerateProducts();
+  const { products, error } = useGenerateProducts();
 
   const heading = productType === "all"
     ? "All Products"
@@ -23,14 +23,13 @@ const ProductsPage = () => {
 
   return (
     <>
-      
       <div className={styles.Products}>
         <div className={styles.ProductsHeader}>
           <h2>{heading}</h2>
 
           <ProductFilter />
         </div>
-
+        {error && <h2>{error}</h2>}
         <ProductDisplay products={products} />
       </div>
     </>

@@ -19,6 +19,7 @@ const FavouritesDisplay = ({ favouriteProducts }: Props) => {
                 ?
                 <div className={styles.FavouritesDisplay}>
                     {favouriteProducts.map(product => <ProductCard
+                        key={product.id}
                         product={product}
                         isFavourited={isFavourited} />)}
                 </div>

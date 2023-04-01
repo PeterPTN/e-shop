@@ -28,6 +28,7 @@ const initialSizes = {
 }
 
 const ProductViewPage = () => {
+  const [error, setError] = useState<null | string>(null);
   const [starStyles, setStarStyles] = useState<string[]>([styles.StarFalse]);
   const [updateLoader, setUpdateLoader] = useState<boolean>(false);
   const [product, setProduct] = useState<ProductItems | null>(null);
@@ -87,7 +88,11 @@ const ProductViewPage = () => {
   }
 
   const handleFavouriteClick = (e: React.MouseEvent<HTMLElement>) => {
-    if (product) setFavouriteProduct(product.id, product.type, product.favourite);
+    if (product) {
+      setFavouriteProduct(product.id, product.type, product.favourite)
+        .catch(error => setError("Could not favourite product"))
+        .finally(() => setTimeout(() => setError(null), 2000));
+    }
     const className = starStyles.toString().match(/[a-zA-Z]+/);
     if (className) className[0] === "StarTrue" ? setStarStyles([styles.StarFalse]) : setStarStyles([styles.StarTrue]);
   }
@@ -163,6 +168,7 @@ const ProductViewPage = () => {
             <header>
               <h2>{product.item}</h2>
               <button onClick={handleNavigateClick}>Back to products</button>
+              {error && <h4>{error}</h4>}
             </header>
 
             <main>

@@ -29,4 +29,12 @@ interface Children {
     children: React.ReactNode,
 }
 
-export type { ProductItems, ProductsArray, Children }
+interface Sizes {
+    xs: number
+    s: number
+    m: number
+    l: number
+    xl: number
+}
+
+export type { ProductItems, ProductsArray, Children, Sizes }

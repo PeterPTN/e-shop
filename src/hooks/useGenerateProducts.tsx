@@ -8,24 +8,37 @@ import { SizeFilterContext } from '../context/SizeFilterProvider';
 
 const useGenerateProducts = () => {
     const [products, setProducts] = useState<ProductsArray>([]);
+    const [error, setError] = useState<string | null>(null);
     const { productType } = useContext(ProductTypeContext);
     const { priceFilter } = useContext(PriceFilterContext);
     const { colorFilter } = useContext(ColorFilterContext);
     const { sizeFilter } = useContext(SizeFilterContext);
 
     const getProductTops = async () => {
-        const tops = await getTops();
-        setProducts(tops);
+        try {
+            const tops = await getTops();
+            setProducts(tops);
+        } catch (error) {
+            setError("Error getting products");
+        }
     }
 
     const getProductBottoms = async () => {
-        const bottoms = await getBottoms();
-        setProducts(bottoms);
+        try {
+            const bottoms = await getBottoms();
+            setProducts(bottoms);
+        } catch (error) {
+            setError("Error getting bottoms");
+        }
     }
 
     const getDefaultProducts = async () => {
-        const allProducts = await getAllProducts();
-        setProducts(allProducts);
+        try {
+            const allProducts = await getAllProducts();
+            setProducts(allProducts);
+        } catch (error) {
+            setError("Error getting tops");
+        }
     }
 
     const filterPrice = (filter: string) => {
@@ -63,7 +76,7 @@ const useGenerateProducts = () => {
         generateProducts();
     }, [productType, priceFilter, colorFilter, sizeFilter])
 
-    return { products };
+    return { products, error };
 }
 
 export default useGenerateProducts
