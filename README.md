@@ -11,7 +11,7 @@ When I tackled this project I knew what I wanted to do in broad strokes. Althoug
 - Staying within a scope and/or taking a step back to revise plans; at the time I was driven to complete this project under a self-imposed deadline, so I didn't take a good wide view as often as I should to carefully reflect on where the codebase was going
 
 ## In Hindsight... 
-The database design could be better. My senior suggested that I create a new collection for the cart system which made a lot of sense. But because of the way it's set up there is some inefficient filter logic. For example it must filter all products available across database to see what's in the cart rather than simply fetching items that are in a cart collection. 
+The database design could be better. My senior suggested that I create a new collection for the cart system which made a lot of sense. But because of the way it's set up now there is some inefficient filter logic. For example it must filter all products available across the database to see what's in the cart, but if completed as my senior suggested I could have simply fetched what was in the cart collection. 
 
 Currently the inefficiency is inconsequential because of the amount of available products but I definitely wouldn't do this for a proper production website.
 
